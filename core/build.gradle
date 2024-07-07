@@ -1,0 +1,16 @@
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+eclipse.project.name = appName + '-core'
+
+ext {
+  ktxVersion = '1.12.1-rc1'
+}
+
+dependencies {
+  api "com.badlogicgames.gdx:gdx:$gdxVersion"
+  api "net.onedaybeard.artemis:artemis-odb:$artemisOdbVersion"
+  api "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+  api group: 'io.github.libktx', name: 'ktx-app', version:ktxVersion
+  api group: 'io.github.libktx', name: 'ktx-ashley', version:ktxVersion
+  api group: 'io.github.libktx', name: 'ktx-graphics', version:ktxVersion
+  api group: 'io.github.libktx', name: 'ktx-log', version:ktxVersion
+}

@@ -1,0 +1,10 @@
+com/badlogic/gdx/utils/lsans-15.fnt
+com/badlogic/gdx/utils/lsans-15.png
+ui/font-subtitle.fnt
+ui/font.fnt
+ui/font-list.fnt
+ui/uiskin.json
+ui/uiskin.png
+ui/uiskin.atlas
+ui/font-window.fnt
+.gitkeep
