@@ -146,8 +146,8 @@ class CWG2dGameScreen(game: CWGGame) : CWGScreen(game) {
     override fun show() {
         LOG.debug{ "showing CWG2dGameScreen" }
 
-        for (xi in 0..16) {
-            for (yi in 0 .. 9) {
+        for (xi in 0..16 step 2) {
+            for (yi in 0 .. 9 step 2) {
                 makeStoneTileEntity(xi, yi)
             }
         }
