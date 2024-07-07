@@ -5,3 +5,12 @@ A [libGDX](https://libgdx.com/) project generated with [gdx-liftoff](https://git
 I'm taking another run at the CWG idea. This time, in Kotlin, because
 I want to target Web, Android, Linux, and Windows, not in that order.
 
+## TODO
+
+ - Camera following the player car
+
+ - opensimplex noise (pip opensimplex)
+
+ - 3d "battlezone" mode game
+
+ - loading JSON arena maps

@@ -30,8 +30,25 @@ class CWG2dGameScreen(game: CWGGame) : CWGScreen(game) {
     private val carGreenTexture = Texture(Gdx.files.internal("sprites/car_green_1.png"))
     private val carBlackTexture = Texture(Gdx.files.internal("sprites/car_black_1.png"))
 
+    private val stoneTileTexture = Texture(Gdx.files.internal( "sprites/MapTiles/tile_stone.png"))
+
     // ecs for now
 
+    fun makeStoneTileEntity(x: Int, y: Int)
+    {
+        engine.entity {
+            with<TransformComponent> {
+                setInitialPosition(x.toFloat(), y.toFloat(), 0.5f)
+                size.set(2.0f, 2.0f)
+            }
+            with<GraphicComponent> {
+                sprite.run {
+                    setRegion(stoneTileTexture)
+                    setSize(2.0f, 2.0f)
+                }
+            }
+        }
+    }
 
     fun makeCarEntity(isPlayer:Boolean)
     {
@@ -129,11 +146,17 @@ class CWG2dGameScreen(game: CWGGame) : CWGScreen(game) {
     override fun show() {
         LOG.debug{ "showing CWG2dGameScreen" }
 
+        for (xi in 0..16) {
+            for (yi in 0 .. 9) {
+                makeStoneTileEntity(xi, yi)
+            }
+        }
         makeCarEntity(true)
 
         repeat(8) {
             makeCarEntity(false)
         }
+
     }
 
 
@@ -156,6 +179,7 @@ class CWG2dGameScreen(game: CWGGame) : CWGScreen(game) {
         carGreenTexture.dispose()
         carBlackTexture.dispose()
         bullet_texture.dispose()
+        stoneTileTexture.dispose()
 
         super.dispose()
     }
