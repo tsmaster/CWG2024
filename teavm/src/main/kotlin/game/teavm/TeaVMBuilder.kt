@@ -15,6 +15,7 @@ object TeaVMBuilder {
             webappPath = File("build/dist").canonicalPath
             // Register any extra classpath assets here:
             // additionalAssetsClasspathFiles += "ktx/demo/asset.extension"
+            htmlTitle = "CWG 2024 on TeaVM"
         }
 
         // Register any classes or packages that require reflection here:
