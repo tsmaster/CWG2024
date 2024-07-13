@@ -1,0 +1,5 @@
+android/build/*
+core/build/*
+html/build/*
+lwgl3/build/*
+teavm/build/*
