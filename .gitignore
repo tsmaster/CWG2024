@@ -3,3 +3,11 @@ core/build/*
 html/build/*
 lwgl3/build/*
 teavm/build/*
+**/build/
+
+.gradle/
+.gradle/8.8/
+.gradle
+.gradle/*
+
+*~
