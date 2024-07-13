@@ -1,0 +1,14 @@
+might need to set the JDK location
+
+export JAVA_HOME=/home/tsmaster/Dropbox/Dev/CWG2024/CWG-LibKTX/OpenJDK/jdk-22.0.1
+
+then use gradle
+
+./gradlew lwgl3:run
+./gradlew android
+./gradlew html:superDev
+  then open a browser to inspect
+
+
+Open the project:
+~/Dropbox/Dev/AndroidStudio/android-studio/bin/studio.sh [maybe Project?]

@@ -3,15 +3,11 @@ package game.screen
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.Input
 import com.badlogic.gdx.graphics.Texture
-import com.badlogic.gdx.graphics.g2d.Sprite
 import com.badlogic.gdx.math.MathUtils
-import com.badlogic.gdx.utils.viewport.FitViewport
 import game.CWGGame
 import game.ecs.components.*
 import ktx.ashley.entity
-import ktx.ashley.get
 import ktx.ashley.with
-import ktx.graphics.use
 import ktx.log.logger
 import kotlin.math.min
 
@@ -34,7 +30,7 @@ class CWG2dGameScreen(game: CWGGame) : CWGScreen(game) {
 
     // ecs for now
 
-    fun makeStoneTileEntity(x: Int, y: Int)
+    private fun makeStoneTileEntity(x: Int, y: Int)
     {
         engine.entity {
             with<TransformComponent> {
@@ -50,7 +46,7 @@ class CWG2dGameScreen(game: CWGGame) : CWGScreen(game) {
         }
     }
 
-    fun makeCarEntity(isPlayer:Boolean)
+    private fun makeCarEntity(isPlayer:Boolean)
     {
         if (isPlayer)
         {
@@ -86,7 +82,7 @@ class CWG2dGameScreen(game: CWGGame) : CWGScreen(game) {
                 with<WeaponComponent> {
                     weaponType = WeaponType.MachineGun
                     weaponTeamIndex = 0
-                    timeToReload = 0.2f;
+                    timeToReload = 0.2f
                 }
             }
         }
@@ -94,7 +90,7 @@ class CWG2dGameScreen(game: CWGGame) : CWGScreen(game) {
         {
             val colorPickerRnd = MathUtils.random(0.0f, 1.0f)
 
-            var carTexture  = when {
+            val carTexture  = when {
                 (colorPickerRnd < 0.3f) -> carRedTexture
                 (colorPickerRnd < 0.6f) -> carYellowTexture
                 (colorPickerRnd < 0.9f) -> carGreenTexture
@@ -137,7 +133,7 @@ class CWG2dGameScreen(game: CWGGame) : CWGScreen(game) {
                 with<WeaponComponent> {
                     weaponType = WeaponType.MachineGun
                     weaponTeamIndex = 1
-                    timeToReload = 0.3f;
+                    timeToReload = 0.3f
                 }
             }
         }
@@ -185,6 +181,6 @@ class CWG2dGameScreen(game: CWGGame) : CWGScreen(game) {
     }
 
     companion object {
-        public val bullet_texture by lazy {Texture(Gdx.files.internal("sprites/bullet.png"))}
+        val bullet_texture by lazy {Texture(Gdx.files.internal("sprites/bullet.png"))}
     }
 }

@@ -4,4 +4,5 @@
 
 
 //include 'lwjgl3', 'html', 'core', 'android'
-include 'lwjgl3', 'core', 'android'
+//include 'lwjgl3', 'core', 'android'
+include 'core', 'lwjgl3', 'android', 'teavm'

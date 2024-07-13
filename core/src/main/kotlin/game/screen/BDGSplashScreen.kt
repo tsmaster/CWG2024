@@ -10,6 +10,7 @@ import ktx.graphics.use
 import ktx.log.logger
 
 private val LOG = logger<BDGSplashScreen>()
+private val SCREEN_TIME = 5.0f
 
 class BDGSplashScreen(game: CWGGame) : CWGScreen(game) {
     private val viewport = FitViewport(16f, 9f);
@@ -17,11 +18,13 @@ class BDGSplashScreen(game: CWGGame) : CWGScreen(game) {
     private val bgsprite = Sprite(bgtexture).apply {
         setSize(16.0f, 9.0f)
     }
+    private var elapsedTime = 0.0f
 
     override fun show() {
         LOG.debug{ "showing BDGSplashScreen" }
 
         bgsprite.setPosition(0.0f, 0.0f)
+        elapsedTime = 0.0f
     }
 
     override fun resize(width: Int, height: Int) {
@@ -36,8 +39,13 @@ class BDGSplashScreen(game: CWGGame) : CWGScreen(game) {
             bgsprite.draw(it)
         }
 
+        elapsedTime += delta
+
         if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_2) ||
-            Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
+            Gdx.input.isKeyJustPressed(Input.Keys.SPACE) ||
+            Gdx.input.isButtonJustPressed(Input.Buttons.LEFT) ||
+            Gdx.input.justTouched() ||
+            elapsedTime >= SCREEN_TIME) {
             game.setScreen<CWGTitleScreen>()
         }
     }

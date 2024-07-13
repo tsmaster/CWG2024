@@ -12,6 +12,7 @@
             <option value="/mnt/dsk2020/ssd/tsmaster/Dropbox/Dev/CWG2024/CWG-LibKTX/CWG2024/android" />
             <option value="/mnt/dsk2020/ssd/tsmaster/Dropbox/Dev/CWG2024/CWG-LibKTX/CWG2024/core" />
             <option value="/mnt/dsk2020/ssd/tsmaster/Dropbox/Dev/CWG2024/CWG-LibKTX/CWG2024/lwjgl3" />
+            <option value="/mnt/dsk2020/ssd/tsmaster/Dropbox/Dev/CWG2024/CWG-LibKTX/CWG2024/teavm" />
           </set>
         </option>
       </GradleProjectSettings>
