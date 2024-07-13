@@ -8,7 +8,9 @@ then use gradle
 ./gradlew android
 ./gradlew html:superDev
   then open a browser to inspect
-
+./gradlew :teavm:run
 
 Open the project:
 ~/Dropbox/Dev/AndroidStudio/android-studio/bin/studio.sh [maybe Project?]
+
+No, prefer IntelliJ Idea
