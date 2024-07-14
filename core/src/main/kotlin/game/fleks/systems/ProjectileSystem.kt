@@ -1,24 +1,22 @@
-package game.ecs.systems
+package game.fleks.systems
 
-import com.badlogic.ashley.core.Entity
-import com.badlogic.ashley.systems.IteratingSystem
-import game.ecs.components.DamageableComponent
-import game.ecs.components.ProjectileComponent
-import game.ecs.components.RemoveComponent
-import game.ecs.components.AshTransformComponent
-import ktx.ashley.addComponent
-import ktx.ashley.allOf
-import ktx.ashley.get
-import ktx.log.logger
+import com.github.quillraven.fleks.Entity
+import com.github.quillraven.fleks.IteratingSystem
+import com.github.quillraven.fleks.World.Companion.family
+import game.fleks.components.ProjectileComponent
+import game.fleks.components.FLTransformComponent
+
+/*
+// TODO: update to Fleks
 
 private val LOG = logger<ProjectileSystem>()
 
 class ProjectileSystem : IteratingSystem(
     allOf(ProjectileComponent::class,
-          AshTransformComponent::class).get()) {
+          TransformComponent::class).get()) {
 
     override fun processEntity(entity: Entity, deltaTime: Float) {
-        val transform = entity[AshTransformComponent.mapper]
+        val transform = entity[TransformComponent.mapper]
         require(transform != null) { "Transform not set" }
         val projectile = entity[ProjectileComponent.mapper]
         require(projectile != null) { "Projectile not set" }
@@ -40,11 +38,11 @@ class ProjectileSystem : IteratingSystem(
         val damageableEntities = engine.getEntitiesFor(
             allOf(
                 DamageableComponent::class,
-                AshTransformComponent::class).get()
+                TransformComponent::class).get()
         )
 
         for (dmgEntity in damageableEntities) {
-            val dmgTransform = dmgEntity[AshTransformComponent.mapper]
+            val dmgTransform = dmgEntity[TransformComponent.mapper]
             require(dmgTransform != null) { "Transform not set" }
             val dmgDamage = dmgEntity[DamageableComponent.mapper]
             require(dmgDamage != null) { "Transform not set" }
@@ -78,4 +76,17 @@ class ProjectileSystem : IteratingSystem(
             }
         }
     }
+}
+*/
+
+class ProjectileSystem() : IteratingSystem (
+    family = family { all(
+        ProjectileComponent,
+        FLTransformComponent
+    )}
+) {
+    override fun onTickEntity(entity: Entity) {
+        TODO("Not yet implemented")
+    }
+
 }

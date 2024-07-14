@@ -5,7 +5,7 @@ import com.badlogic.ashley.systems.SortedIteratingSystem
 import com.badlogic.gdx.graphics.g2d.Batch
 import com.badlogic.gdx.utils.viewport.Viewport
 import game.ecs.components.GraphicComponent
-import game.ecs.components.TransformComponent
+import game.ecs.components.AshTransformComponent
 import ktx.ashley.allOf
 import ktx.ashley.get
 import ktx.graphics.use
@@ -17,8 +17,8 @@ class RenderSystem(
     private val batch: Batch,
     private val gameViewport: Viewport
 ) : SortedIteratingSystem (
-    allOf(TransformComponent::class, GraphicComponent::class).get(),
-    compareBy { entity -> entity[TransformComponent.mapper] }
+    allOf(AshTransformComponent::class, GraphicComponent::class).get(),
+    compareBy { entity -> entity[AshTransformComponent.mapper] }
 )
 {
     override fun update(deltaTime: Float) {
@@ -30,7 +30,7 @@ class RenderSystem(
     }
 
     override fun processEntity(entity: Entity, deltaTime: Float) {
-        val transformComponent = entity[TransformComponent.mapper]
+        val transformComponent = entity[AshTransformComponent.mapper]
         require(transformComponent != null) { "Entity |entity| must have TransformComponent. entity=$entity" }
 
         val graphicComponent = entity[GraphicComponent.mapper]

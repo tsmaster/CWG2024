@@ -6,15 +6,18 @@ import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.math.MathUtils
 import game.CWGGame
 import game.ecs.components.*
+import game.ecs.components.AIControlledComponent
+import game.ecs.components.DamageableComponent
+import game.ecs.components.PlayerComponent
 import ktx.ashley.entity
 import ktx.ashley.with
 import ktx.log.logger
 import kotlin.math.min
 
-private val LOG = logger<CWG2dGameScreen>()
+private val LOG = logger<CWG2dGameScreenAshley>()
 private const val MAX_DELTA_TIME = 1/20.0f
 
-class CWG2dGameScreen(game: CWGGame) : CWGScreen(game) {
+class CWG2dGameScreenAshley(game: CWGGame) : CWGScreen(game) {
 
     //private val car_0_texture = Texture(Gdx.files.internal("sprites/car-white.png"))
     //private val car_1_texture = Texture(Gdx.files.internal("sprites/car-red.png"))
@@ -33,7 +36,7 @@ class CWG2dGameScreen(game: CWGGame) : CWGScreen(game) {
     private fun makeStoneTileEntity(x: Int, y: Int)
     {
         engine.entity {
-            with<TransformComponent> {
+            with<AshTransformComponent> {
                 setInitialPosition(x.toFloat(), y.toFloat(), 0.5f)
                 size.set(2.0f, 2.0f)
             }
@@ -51,7 +54,7 @@ class CWG2dGameScreen(game: CWGGame) : CWGScreen(game) {
         if (isPlayer)
         {
             engine.entity {
-                with<TransformComponent> {
+                with<AshTransformComponent> {
                     setInitialPosition(
                         MathUtils.random(0.0f, 16.0f),
                         MathUtils.random(0.0f, 9.0f),
@@ -98,7 +101,7 @@ class CWG2dGameScreen(game: CWGGame) : CWGScreen(game) {
             }
 
             engine.entity {
-                with<TransformComponent> {
+                with<AshTransformComponent> {
                     position.set(
                         MathUtils.random(0.0f, 16.0f),
                         MathUtils.random(0.0f, 9.0f),
@@ -140,7 +143,7 @@ class CWG2dGameScreen(game: CWGGame) : CWGScreen(game) {
     }
 
     override fun show() {
-        LOG.debug{ "showing CWG2dGameScreen" }
+        LOG.debug{ "showing CWG2dGameScreenAshley" }
 
         for (xi in 0..16 step 2) {
             for (yi in 0 .. 9 step 2) {

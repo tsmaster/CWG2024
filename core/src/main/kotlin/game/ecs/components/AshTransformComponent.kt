@@ -2,13 +2,12 @@ package game.ecs.components
 
 import com.badlogic.ashley.core.Component
 import com.badlogic.ashley.core.ComponentMapper
-import com.badlogic.ashley.core.Entity
 import com.badlogic.gdx.math.Vector2
 import com.badlogic.gdx.math.Vector3
 import com.badlogic.gdx.utils.Pool
 import ktx.ashley.mapperFor
 
-class TransformComponent : Component, Pool.Poolable, Comparable<TransformComponent> {
+class AshTransformComponent : Component, Pool.Poolable, Comparable<AshTransformComponent> {
     var position = Vector3()
     var previousPosition = Vector3()
     var interpolatedPosition = Vector3()
@@ -29,14 +28,14 @@ class TransformComponent : Component, Pool.Poolable, Comparable<TransformCompone
         interpolatedPosition.set(x, y, z)
     }
 
-    override fun compareTo(other: TransformComponent): Int {
+    override fun compareTo(other: AshTransformComponent): Int {
         val zDiff = other.position.z.compareTo(position.z)
         val yDiff = other.position.y.compareTo(position.y)
         return if (zDiff == 0) yDiff else zDiff
     }
 
     companion object {
-        val mapper:ComponentMapper<TransformComponent> = mapperFor<TransformComponent>()
+        val mapper:ComponentMapper<AshTransformComponent> = mapperFor<AshTransformComponent>()
     }
 }
 

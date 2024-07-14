@@ -10,10 +10,11 @@ abstract class CWGScreen(
     val game:CWGGame,
     val batch: Batch = game.batch,
     val gameViewport: Viewport = game.gameViewport,
+    val uiViewport: Viewport = game.uiViewport,
     val engine: Engine = game.engine,
 ) :KtxScreen {
 
-    // TODOmaybe add in an update, too?
+    // TODO maybe add in an update, too?
 
 
     override fun resize(width: Int, height: Int) {

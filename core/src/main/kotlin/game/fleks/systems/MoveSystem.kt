@@ -1,46 +1,38 @@
-package game.ecs.systems
+package game.fleks.systems
 
-import com.badlogic.ashley.core.Entity
-import com.badlogic.ashley.systems.IteratingSystem
-import com.badlogic.gdx.math.MathUtils
-import game.ecs.components.PlayerComponent
-import game.ecs.components.RemoveComponent
-import game.ecs.components.TargetedSteeringComponent
-import game.ecs.components.AshTransformComponent
-import ktx.ashley.allOf
-import ktx.ashley.exclude
-import ktx.ashley.get
-import kotlin.math.abs
-import kotlin.math.atan2
-import kotlin.math.cos
-import kotlin.math.sin
+import com.github.quillraven.fleks.Entity
+import com.github.quillraven.fleks.World.Companion.family
+import game.fleks.components.TargetedSteeringComponent
 
 const val UPDATE_RATE =  1 / 25.0f
 
+// TODO: update to Fleks
+
+/*
 class MoveSystem :
     IteratingSystem(allOf(
-        AshTransformComponent::class,
+        TransformComponent::class,
         TargetedSteeringComponent::class).exclude(RemoveComponent::class).get()) {
     private var accumulator = 0.0f
 
     override fun update(deltaTime: Float) {
         accumulator += deltaTime
-        while (accumulator >= game.ecs.systems.UPDATE_RATE) {
-            accumulator -= game.ecs.systems.UPDATE_RATE
+        while (accumulator >= UPDATE_RATE) {
+            accumulator -= UPDATE_RATE
 
             entities.forEach { entity->
-                entity[AshTransformComponent.mapper] ?.let { transform ->
+                entity[TransformComponent.mapper] ?.let { transform ->
                     transform.previousPosition.set(transform.position)
 
 
                 }
             }
-            super.update(game.ecs.systems.UPDATE_RATE)
+            super.update(UPDATE_RATE)
         }
 
-        val alpha:Float = accumulator / game.ecs.systems.UPDATE_RATE
+        val alpha:Float = accumulator / UPDATE_RATE
         entities.forEach { entity ->
-            entity[AshTransformComponent.mapper]?.let { transform ->
+            entity[TransformComponent.mapper]?.let {transform ->
                 transform.interpolatedPosition.set(
                     MathUtils.lerp(transform.previousPosition.x, transform.position.x, alpha ),
                     MathUtils.lerp(transform.previousPosition.y, transform.position.y, alpha ),
@@ -51,7 +43,7 @@ class MoveSystem :
     }
 
     override fun processEntity(entity: Entity, deltaTime: Float) {
-        val transform = entity[AshTransformComponent.mapper]
+        val transform = entity[TransformComponent.mapper]
         require(transform != null) { "Entity |entity| must have TransformComponent. entity=$entity" }
         val steeringComponent = entity[TargetedSteeringComponent.mapper]
         require(steeringComponent != null) {"Entity |entity| must have TargetedSteeringComponent. entity=$entity"}
@@ -73,7 +65,7 @@ class MoveSystem :
     }
 
     private fun moveEntity(
-        transformComponent: AshTransformComponent,
+        transformComponent: TransformComponent,
         steeringComponent: TargetedSteeringComponent,
         deltaTime: Float) : Boolean {
         val movementThisTick = steeringComponent.speed * deltaTime
@@ -138,4 +130,16 @@ class MoveSystem :
             MathUtils.random(0.0f, 9.0f)
         )
     }
+}
+*/
+
+class MoveSystem (
+
+) : com.github.quillraven.fleks.IteratingSystem (
+    family = family { all(TargetedSteeringComponent, game.fleks.components.FLTransformComponent)}
+) {
+    override fun onTickEntity(entity: Entity) {
+        TODO("Not yet implemented")
+    }
+
 }

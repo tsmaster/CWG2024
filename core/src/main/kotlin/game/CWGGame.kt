@@ -7,15 +7,17 @@ import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.g2d.Batch
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.utils.viewport.FitViewport
-import game.ecs.systems.*
 import game.screen.*
+import game.ecs.components.*
+import game.ecs.systems.*
 import ktx.app.KtxGame
-import ktx.log.*
+import ktx.log.logger
 
 private val LOG = logger<CWGGame>()
 
 class CWGGame : KtxGame<CWGScreen>() {
     val gameViewport = FitViewport(16f, 9f);
+    val uiViewport = FitViewport(1280f, 768f);
     val batch: Batch by lazy { SpriteBatch(300) }
     val engine: Engine by lazy {
         PooledEngine().apply {
@@ -36,7 +38,8 @@ class CWGGame : KtxGame<CWGScreen>() {
         addScreen(CWGTitleScreen(this))
         addScreen(CWGMenuScreen(this))
 
-        addScreen(CWG2dGameScreen(this))
+        addScreen(CWG2dGameScreenAshley(this))
+        addScreen(CWG2dGameScreenFleks(this))
         addScreen(CWG3dGameScreen(this))
 
         setScreen<BDGSplashScreen>()

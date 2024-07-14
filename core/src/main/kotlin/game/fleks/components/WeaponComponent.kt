@@ -1,14 +1,11 @@
-package game.ecs.components
+package game.fleks.components
 
-import com.badlogic.ashley.core.Component
-import com.badlogic.ashley.core.Engine
+import com.github.quillraven.fleks.Component
+import com.github.quillraven.fleks.ComponentType
 import com.badlogic.gdx.math.Vector2
-import com.badlogic.gdx.utils.Pool
-import game.screen.CWG2dGameScreenAshley
-import ktx.ashley.entity
-import ktx.ashley.mapperFor
-import ktx.ashley.with
 import ktx.log.logger
+
+// TODO: update to Fleks
 
 enum class WeaponType {
     MachineGun,
@@ -25,16 +22,17 @@ enum class WeaponType {
 
 const val SHOOT_SPEED = 5.0f;
 
+/*
 private val LOG = logger<WeaponComponent>()
 
 class WeaponComponent: Component, Pool.Poolable {
-    public var weaponType:WeaponType = game.ecs.components.WeaponType.MachineGun;
+    public var weaponType:WeaponType = game.fleks.components.WeaponType.MachineGun;
     public var weaponTeamIndex: Int = -1
     public var timeSinceLastShot: Float = 0f
     public var timeToReload: Float = 0.0f
 
     override fun reset() {
-        weaponType = game.ecs.components.WeaponType.MachineGun;
+        weaponType = game.fleks.components.WeaponType.MachineGun;
         weaponTeamIndex = -1
         timeSinceLastShot = 0f
         timeToReload = 0.0f
@@ -49,8 +47,9 @@ class WeaponComponent: Component, Pool.Poolable {
         timeSinceLastShot = 0.0f
         val shootVec = targetPos.sub(startPos).nor().scl(SHOOT_SPEED)
 
+        /*
         engine.entity {
-            with<AshTransformComponent> {
+            with<TransformComponent> {
                 setInitialPosition(startPos.x, startPos.y, 0.0f)
                 size.set(0.25f, 0.25f)
             }
@@ -67,10 +66,19 @@ class WeaponComponent: Component, Pool.Poolable {
                 lifetimeLeftSeconds = 1.0f
                 teamIndex = weaponTeamIndex
             }
-        }
+        }*/
     }
 
     companion object {
         val mapper = mapperFor<WeaponComponent>()
     }
+}*/
+
+
+class WeaponComponent : Component<WeaponComponent> {
+    var timeSinceLastShot: Float = 0.0f
+
+    override fun type() = WeaponComponent
+
+    companion object : ComponentType<WeaponComponent>()
 }

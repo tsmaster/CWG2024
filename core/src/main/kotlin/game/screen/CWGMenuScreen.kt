@@ -60,10 +60,10 @@ class CWGMenuScreen(game: CWGGame) : CWGScreen(game) {
         }
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_1)) {
-            game.setScreen<CWG2dGameScreen>()
+            game.setScreen<CWG2dGameScreenAshley>()
         }
         if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_2)) {
-            game.setScreen<CWG3dGameScreen>()
+            game.setScreen<CWG2dGameScreenFleks>()
         }
         if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_3)) {
             // exit game

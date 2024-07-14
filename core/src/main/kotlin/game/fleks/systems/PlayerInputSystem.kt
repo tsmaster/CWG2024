@@ -1,34 +1,31 @@
-package game.ecs.systems
+package game.fleks.systems
 
-import com.badlogic.ashley.core.Entity
-import com.badlogic.ashley.systems.IteratingSystem
-import com.badlogic.gdx.Gdx
-import com.badlogic.gdx.Input
-import com.badlogic.gdx.math.Vector2
-import com.badlogic.gdx.utils.viewport.Viewport
-import game.ecs.components.PlayerComponent
-import game.ecs.components.TargetedSteeringComponent
-import game.ecs.components.AshTransformComponent
-import game.ecs.components.WeaponComponent
-import ktx.ashley.allOf
-import ktx.ashley.get
-import ktx.log.logger
+import com.github.quillraven.fleks.Entity
+import com.github.quillraven.fleks.IteratingSystem
+import com.github.quillraven.fleks.World.Companion.family
+import game.fleks.components.PlayerComponent
+import game.fleks.components.TargetedSteeringComponent
+import game.fleks.components.FLTransformComponent
+import game.fleks.components.WeaponComponent
 
+/*
 private val LOG = logger<PlayerInputSystem>()
+
+// TODO: update to Fleks
 
 class PlayerInputSystem(
     private val gameViewport: Viewport
 ) : IteratingSystem(
     allOf(
         PlayerComponent::class,
-        AshTransformComponent::class,
+        TransformComponent::class,
         TargetedSteeringComponent::class,
         WeaponComponent::class
         ).get()) {
     private val tmpVec = Vector2()
 
     override fun processEntity(entity: Entity, deltaTime: Float) {
-        val transformComponent = entity[AshTransformComponent.mapper]
+        val transformComponent = entity[TransformComponent.mapper]
         require(transformComponent != null) { "Entity |entity| must have TransformComponent. entity=$entity" }
         val steeringComponent = entity[TargetedSteeringComponent.mapper]
         require(steeringComponent != null) { "Entity |entity| must have SteeringComponent. entity=$entity" }
@@ -58,5 +55,18 @@ class PlayerInputSystem(
                     transformComponent.position.x,
                     transformComponent.position.y), worldPosOfCursor)
         }
+    }
+}
+*/
+
+class PlayerInputSystem() : IteratingSystem (
+    family = family { all (
+        PlayerComponent,
+        FLTransformComponent,
+        TargetedSteeringComponent,
+        WeaponComponent)}
+) {
+    override fun onTickEntity(entity: Entity) {
+        TODO("Not yet implemented")
     }
 }
