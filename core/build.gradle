@@ -1,10 +1,6 @@
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 eclipse.project.name = appName + '-core'
 
-ext {
-  ktxVersion = '1.12.1-rc1'
-}
-
 dependencies {
   api "com.badlogicgames.gdx:gdx:$gdxVersion"
   api "net.onedaybeard.artemis:artemis-odb:$artemisOdbVersion"
@@ -13,5 +9,6 @@ dependencies {
   api group: 'io.github.libktx', name: 'ktx-ashley', version:ktxVersion
   api group: 'io.github.libktx', name: 'ktx-graphics', version:ktxVersion
   api group: 'io.github.libktx', name: 'ktx-log', version:ktxVersion
-  implementation 'io.github.quillraven.fleks:Fleks:2.8'
+  api group: 'io.github.quillraven.fleks', name: 'Fleks', version:fleksVersion
+  implementation "com.badlogicgames.gdx-controllers:gdx-controllers-core:$gdxControllersVersion"
 }

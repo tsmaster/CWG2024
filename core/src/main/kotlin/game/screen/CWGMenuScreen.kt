@@ -2,6 +2,8 @@ package game.screen
 
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.Input
+import com.badlogic.gdx.controllers.Controller
+import com.badlogic.gdx.controllers.Controllers
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.Sprite
 import com.badlogic.gdx.utils.viewport.FitViewport
@@ -40,6 +42,11 @@ class CWGMenuScreen(game: CWGGame) : CWGScreen(game) {
         btn1sprite.setPosition(8.0f, 8.0f)
         btn2sprite.setPosition(8.0f, 7.0f)
         btn3sprite.setPosition(8.0f, 6.0f)
+
+        LOG.info { "enumerating detected game controllers" }
+        for (controller: Controller in Controllers.getControllers()) {
+            LOG.info{ " found controller: " + controller.name }
+        }
     }
 
     override fun resize(width: Int, height: Int) {
