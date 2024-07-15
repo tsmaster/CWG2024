@@ -52,6 +52,7 @@ class CWGMenuScreen(game: CWGGame) : CWGScreen(game) {
             add(Pair(Vector2(8.0f, 6.0f), Vector2(2.0f, 0.5f)))
         }
 
+        /*
         LOG.info { "enumerating detected game controllers" }
         for (controller: Controller in Controllers.getControllers()) {
             LOG.info{ " found controller: " + controller.name }
@@ -61,6 +62,8 @@ class CWGMenuScreen(game: CWGGame) : CWGScreen(game) {
         if (curController != null) {
             LOG.info { "current controller is: " + curController.name }
         }
+
+         */
     }
 
     override fun resize(width: Int, height: Int) {

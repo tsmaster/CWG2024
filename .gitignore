@@ -11,3 +11,4 @@ teavm/build/*
 .gradle/*
 
 *~
+.idea/
