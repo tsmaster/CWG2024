@@ -29,3 +29,13 @@ guarded by a runtime test.
 next up:
 continue rewriting Ashley-ECS code to Fleks-ECS code
 
+---
+July 15 2024
+Rewriting Ashley ECS code to Fleks ECS code
+
+So far, pretty easy - all(?) that remains is the projectile system.
+
+next up:
+finish Fleks port
+remove Ashley code
+remove Ashley dependencies
