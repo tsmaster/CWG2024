@@ -35,7 +35,6 @@ class CWG2dGameScreenFleks(game: CWGGame) : CWGScreen(game) {
     private val worldStage = Stage(ExtendViewport(16.0f, 9.0f))
     private val uiStage = Stage(ExtendViewport(1280.0f, 768.0f))
 
-    // maybe move this up into CWGGame?
     // see https://github.com/Quillraven/Fleks/wiki/World
     private val fleksWorld:World = configureWorld {
         injectables {
@@ -47,8 +46,11 @@ class CWG2dGameScreenFleks(game: CWGGame) : CWGScreen(game) {
         }
 
         systems {
-            //add(DummyTransformSystem())
+            add(PlayerInputSystem())
             add(RenderSystem())
+            add(MoveSystem())
+            add(ProjectileSystem())
+            add(WeaponCooldownSystem())
             add(RemoveSystem())
         }
     }
