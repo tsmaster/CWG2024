@@ -14,3 +14,18 @@ Open the project:
 ~/Dropbox/Dev/AndroidStudio/android-studio/bin/studio.sh [maybe Project?]
 
 No, prefer IntelliJ Idea
+
+---
+
+July 14 2024
+Seems to be working on HTML/TeaVM
+pushed up the teavm/build/dist/webapp folder to S3/bigdicegames.com/CWG2024
+which means http://bigdicegames.com/CWG2024/index.html plays the "game"
+
+Got a USB gamepad recognized on desktop, but it crashes web - maybe I
+need to set up dependencies for the TeaVM project. For now, it's
+guarded by a runtime test.
+
+next up:
+continue rewriting Ashley-ECS code to Fleks-ECS code
+

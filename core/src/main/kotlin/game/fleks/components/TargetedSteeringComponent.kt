@@ -4,10 +4,9 @@ import com.github.quillraven.fleks.Component
 import com.github.quillraven.fleks.ComponentType
 import com.badlogic.gdx.math.Vector2
 
-// TODO: update to Fleks
+class TargetedSteeringComponent : Component<TargetedSteeringComponent> {
+    override fun type() = TargetedSteeringComponent
 
-/*
-class TargetedSteeringComponent : Component, Pool.Poolable {
     var headingDegrees = 0.0f
     var speed = 0.0f
     var targetWorldPos = Vector2(0.0f, 0.0f)
@@ -16,26 +15,6 @@ class TargetedSteeringComponent : Component, Pool.Poolable {
     var maxSpeed = 100.0f;
     var maxAccel = 20.0f;
     var maxBrake = 10.0f;
-
-    override fun reset() {
-        headingDegrees = 0.0f
-        speed = 0.0f
-        targetWorldPos = Vector2(0.0f, 0.0f)
-        hasTarget = false
-        turnRate = 0.0f
-        maxSpeed = 100.0f
-        maxAccel = 20.0f
-        maxBrake = 50.0f
-    }
-
-    companion object {
-        val mapper:ComponentMapper<TargetedSteeringComponent> = mapperFor<TargetedSteeringComponent>()
-    }
-}*/
-
-
-class TargetedSteeringComponent : Component<TargetedSteeringComponent> {
-    override fun type() = TargetedSteeringComponent
 
     companion object : ComponentType<TargetedSteeringComponent>()
 }

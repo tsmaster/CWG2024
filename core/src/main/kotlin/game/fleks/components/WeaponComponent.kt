@@ -1,8 +1,11 @@
 package game.fleks.components
 
+import com.badlogic.gdx.graphics.g2d.Sprite
 import com.github.quillraven.fleks.Component
 import com.github.quillraven.fleks.ComponentType
 import com.badlogic.gdx.math.Vector2
+import com.github.quillraven.fleks.World
+import game.screen.CWG2dGameScreenFleks
 import ktx.log.logger
 
 // TODO: update to Fleks
@@ -22,63 +25,40 @@ enum class WeaponType {
 
 const val SHOOT_SPEED = 5.0f;
 
-/*
-private val LOG = logger<WeaponComponent>()
+class WeaponComponent : Component<WeaponComponent> {
+    override fun type() = WeaponComponent
 
-class WeaponComponent: Component, Pool.Poolable {
     public var weaponType:WeaponType = game.fleks.components.WeaponType.MachineGun;
     public var weaponTeamIndex: Int = -1
     public var timeSinceLastShot: Float = 0f
     public var timeToReload: Float = 0.0f
 
-    override fun reset() {
-        weaponType = game.fleks.components.WeaponType.MachineGun;
-        weaponTeamIndex = -1
-        timeSinceLastShot = 0f
-        timeToReload = 0.0f
-    }
-
-    fun fireAt(engine: Engine, startPos: Vector2, targetPos: Vector2) {
+    // TODO this does not belong in the component, put it in a system?
+    fun fireAt(world: World, startPos: Vector2, targetPos: Vector2) {
         if (timeSinceLastShot < timeToReload)
         {
             return
         }
-        LOG.debug { "shooting" }
+        //LOG.debug { "shooting" }
         timeSinceLastShot = 0.0f
         val shootVec = targetPos.sub(startPos).nor().scl(SHOOT_SPEED)
 
-        /*
-        engine.entity {
-            with<TransformComponent> {
-                setInitialPosition(startPos.x, startPos.y, 0.0f)
+        world.entity {
+            it += FLTransformComponent(startPos).apply {
                 size.set(0.25f, 0.25f)
             }
-            with<GraphicComponent> {
-                sprite.run {
-                    setRegion(CWG2dGameScreenAshley.bullet_texture)
-                    setSize(0.25f, 0.25f)
-                    setOriginCenter()
-                }
+            it += GraphicComponent(Sprite(CWG2dGameScreenFleks.bullet_texture)).apply {
+                sprite.setSize(0.25f, 0.25f)
+                sprite.setOriginCenter()
             }
-            with<ProjectileComponent> {
+            it += ProjectileComponent().apply {
                 velocity.set(shootVec.x, shootVec.y)
                 damagePayload = 60.0f
                 lifetimeLeftSeconds = 1.0f
                 teamIndex = weaponTeamIndex
             }
-        }*/
+        }
     }
-
-    companion object {
-        val mapper = mapperFor<WeaponComponent>()
-    }
-}*/
-
-
-class WeaponComponent : Component<WeaponComponent> {
-    var timeSinceLastShot: Float = 0.0f
-
-    override fun type() = WeaponComponent
 
     companion object : ComponentType<WeaponComponent>()
 }

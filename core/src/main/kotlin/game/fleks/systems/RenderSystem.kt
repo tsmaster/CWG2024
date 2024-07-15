@@ -79,17 +79,11 @@ class RenderSystem(
 
         graphicComponent.sprite.run {
             rotation = transformComponent.rotationDeg
-            /*
             setBounds(
                 transformComponent.position.x,
                 transformComponent.position.y,
                 transformComponent.size.x,
-                transformComponent.size.y)*/
-            setBounds(
-                transformComponent.position.x,
-                transformComponent.position.y,
-                2.0f,
-                2.0f)
+                transformComponent.size.y)
             draw(batch)
         }
     }

@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.Input
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.Sprite
+import com.badlogic.gdx.math.MathUtils
 import com.badlogic.gdx.math.Vector2
 import com.badlogic.gdx.scenes.scene2d.Stage
 import com.badlogic.gdx.utils.viewport.ExtendViewport
@@ -56,12 +57,13 @@ class CWG2dGameScreenFleks(game: CWGGame) : CWGScreen(game) {
 
     private fun makeStoneTileEntity(x: Int, y: Int)
     {
-        val sprite = Sprite(stoneTileTexture)
-        sprite.setSize(2.0f, 2.0f)
-
         fleksWorld.entity {
-            it += FLTransformComponent(Vector2(x * 1.0f, y * 1.0f))
-            it += GraphicComponent(sprite = sprite)
+            it += FLTransformComponent(Vector2(x * 1.0f, y * 1.0f)).apply {
+                size = Vector2(2.0f, 2.0f)
+            }
+            it += GraphicComponent(sprite = Sprite(stoneTileTexture)).apply {
+                sprite.setSize(2.0f, 2.0f)
+            }
         }
     }
 
@@ -69,48 +71,38 @@ class CWG2dGameScreenFleks(game: CWGGame) : CWGScreen(game) {
     {
         if (isPlayer)
         {
-            /*
-            engine.entity {
-                with<TransformComponent> {
-                    setInitialPosition(
-                        com.badlogic.gdx.math.MathUtils.random(0.0f, 16.0f),
-                        com.badlogic.gdx.math.MathUtils.random(0.0f, 9.0f),
-                        0.0f
-                    )
+            fleksWorld.entity {
+                it += FLTransformComponent(Vector2(
+                    com.badlogic.gdx.math.MathUtils.random(0.0f, 16.0f),
+                    com.badlogic.gdx.math.MathUtils.random(0.0f, 9.0f),
+                )).apply {
                     size.set(0.5f, 1.0f)
                 }
-                with<GraphicComponent> {
-                    sprite.run {
-                        setRegion(carBlueTexture)
-                        setSize(0.5f, 1.0f)
-                        setOriginCenter()
-                    }
+                it += GraphicComponent(Sprite(carBlueTexture)).apply {
+                    sprite.setRegion(carBlueTexture)
+                    sprite.setSize(0.5f, 1.0f)
+                    sprite.setOriginCenter()
                 }
-                with<DamageableComponent> {
+                it += DamageableComponent().apply {
                     dmgTeamIndex = 0
                 }
-                with<TargetedSteeringComponent> {
+                it += TargetedSteeringComponent().apply {
                     headingDegrees = com.badlogic.gdx.math.MathUtils.random(0.0f, 360.0f)
                     turnRate = 35.0f
                     maxAccel = 0.25f
                     maxSpeed = 5.0f
                     hasTarget = false
                 }
-                with<PlayerComponent> {
-
-                }
-                with<WeaponComponent> {
+                it += PlayerComponent()
+                it += WeaponComponent().apply {
                     weaponType = WeaponType.MachineGun
                     weaponTeamIndex = 0
                     timeToReload = 0.2f
                 }
             }
-
-             */
         }
         else
         {
-            /*
             val colorPickerRnd = MathUtils.random(0.0f, 1.0f)
 
             val carTexture  = when {
@@ -120,47 +112,38 @@ class CWG2dGameScreenFleks(game: CWGGame) : CWGScreen(game) {
                 else -> carBlackTexture
             }
 
-            engine.entity {
-                with<TransformComponent> {
-                    position.set(
-                        com.badlogic.gdx.math.MathUtils.random(0.0f, 16.0f),
-                        com.badlogic.gdx.math.MathUtils.random(0.0f, 9.0f),
-                        0.0f)
+            fleksWorld.entity {
+                it += FLTransformComponent(Vector2(
+                    MathUtils.random(0.0f, 16.0f),
+                    MathUtils.random(0.0f, 9.0f))
+                ).apply {
                     size.set(0.5f, 1.0f)
                 }
-                with<GraphicComponent> {
-                    sprite.run {
-                        setRegion(carTexture)
-                        setSize(0.5f, 1.0f)
-                        setOriginCenter()
-                    }
+                it += GraphicComponent(Sprite(carTexture)).apply {
+                    sprite.setSize(0.5f, 1.0f)
+                    sprite.setOriginCenter()
                 }
-                with<DamageableComponent> {
+                it += DamageableComponent().apply {
                     dmgTeamIndex = 1
                 }
-                with<TargetedSteeringComponent> {
-                    headingDegrees = com.badlogic.gdx.math.MathUtils.random(0.0f, 360.0f)
+                it += TargetedSteeringComponent().apply {
+                    headingDegrees = MathUtils.random(0.0f, 360.0f)
                     targetWorldPos.set(
-                        com.badlogic.gdx.math.MathUtils.random(0.0f, 16.0f),
-                        com.badlogic.gdx.math.MathUtils.random(0.0f, 9.0f)
-                        //8.0f, 4.5f
+                        MathUtils.random(0.0f, 16.0f),
+                        MathUtils.random(0.0f, 9.0f)
                     )
                     turnRate = 25.0f
                     maxAccel = 0.25f
                     maxSpeed = 5.0f
                     hasTarget = true
                 }
-                with<AIControlledComponent> {
-
-                }
-                with<WeaponComponent> {
+                it += AIControlledComponent()
+                it += WeaponComponent().apply {
                     weaponType = WeaponType.MachineGun
                     weaponTeamIndex = 1
                     timeToReload = 0.3f
                 }
             }
-
-             */
         }
     }
 
@@ -177,9 +160,7 @@ class CWG2dGameScreenFleks(game: CWGGame) : CWGScreen(game) {
         repeat(8) {
             makeCarEntity(false)
         }
-
     }
-
 
     override fun render(delta: Float) {
         super.render(delta)
