@@ -6,7 +6,7 @@ import com.github.quillraven.fleks.IteratingSystem
 import com.github.quillraven.fleks.World.Companion.family
 import com.github.quillraven.fleks.World.Companion.inject
 import game.fleks.components.GraphicComponent
-import game.fleks.components.FLTransformComponent
+import game.fleks.components.TransformComponent
 import ktx.log.logger
 
 // TODO: update for full functionality
@@ -19,7 +19,7 @@ class RenderSystem(
 ) : IteratingSystem(
 
     family = family {
-        all(FLTransformComponent, GraphicComponent)
+        all(TransformComponent, GraphicComponent)
     }
 )
 {
@@ -66,7 +66,7 @@ class RenderSystem(
     override fun onTickEntity(entity: com.github.quillraven.fleks.Entity) {
         //entity[GraphicComponent].sprite.draw(batch)
 
-        val transformComponent = entity[FLTransformComponent]
+        val transformComponent = entity[TransformComponent]
         val graphicComponent = entity[GraphicComponent]
 
         if (graphicComponent.sprite == null)

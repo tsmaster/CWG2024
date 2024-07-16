@@ -39,3 +39,16 @@ next up:
 finish Fleks port
 remove Ashley code
 remove Ashley dependencies
+
+---
+July 16 2024
+
+Removed all of the Ashley code, dependencies
+Fleks port seems complete
+
+Have been looking into creating a highway map
+
+Looks like my best, most recent work, is a hybrid Rust/Python
+processor of OSM data - see BigMesh/BigMesh/DrawMap, which is the rust
+component, and maybe drawvoronoitiles.py, which parses the output to
+draw polylines.

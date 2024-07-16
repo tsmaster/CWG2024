@@ -113,7 +113,7 @@ class CWGMenuScreen(game: CWGGame) : CWGScreen(game) {
 
     private fun dispatchNumeric(buttonIndex: Int) {
         when (buttonIndex) {
-            0 -> game.setScreen<CWG2dGameScreenAshley>()
+            0 -> game.setScreen<CWG2dGameScreenFleks>()
             1 -> game.setScreen<CWG2dGameScreenFleks>()
             2 -> game.setExit()
             else -> {}

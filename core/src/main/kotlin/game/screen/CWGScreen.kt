@@ -11,7 +11,6 @@ abstract class CWGScreen(
     val batch: Batch = game.batch,
     val gameViewport: Viewport = game.gameViewport,
     val uiViewport: Viewport = game.uiViewport,
-    val engine: Engine = game.engine,
 ) :KtxScreen {
 
     // TODO maybe add in an update, too?

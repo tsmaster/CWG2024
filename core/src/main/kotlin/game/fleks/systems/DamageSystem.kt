@@ -4,7 +4,7 @@ import com.github.quillraven.fleks.Entity
 import com.github.quillraven.fleks.IteratingSystem
 import com.github.quillraven.fleks.World.Companion.family
 import game.fleks.components.DamageableComponent
-import game.fleks.components.FLTransformComponent
+import game.fleks.components.TransformComponent
 
 
 // TODO: do I need this?
@@ -28,7 +28,7 @@ class DamageSystem : IteratingSystem(
 */
 
 class DamageSystem : IteratingSystem(
-    family = family { all(DamageableComponent, FLTransformComponent)}
+    family = family { all(DamageableComponent, TransformComponent)}
 ) {
     override fun onTickEntity(entity: Entity) {
         TODO("Not yet implemented")

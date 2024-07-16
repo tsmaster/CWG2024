@@ -5,15 +5,15 @@ import com.badlogic.gdx.math.Vector3
 import com.github.quillraven.fleks.Component
 import com.github.quillraven.fleks.ComponentType
 
-data class FLTransformComponent(
+data class TransformComponent(
     val xy: Vector2
-) : Component<FLTransformComponent> {
-    override fun type() = FLTransformComponent
+) : Component<TransformComponent> {
+    override fun type() = TransformComponent
 
     var position = Vector3(xy.x, xy.y, 0f)
     var size = Vector2(1.0f, 1.0f)
     var rotationDeg = 0.0f
 
-    companion object : ComponentType<FLTransformComponent>()
+    companion object : ComponentType<TransformComponent>()
 }
 

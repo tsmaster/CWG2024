@@ -6,7 +6,6 @@ import com.github.quillraven.fleks.ComponentType
 import com.badlogic.gdx.math.Vector2
 import com.github.quillraven.fleks.World
 import game.screen.CWG2dGameScreenFleks
-import ktx.log.logger
 
 // TODO: update to Fleks
 
@@ -44,7 +43,7 @@ class WeaponComponent : Component<WeaponComponent> {
         val shootVec = targetPos.sub(startPos).nor().scl(SHOOT_SPEED)
 
         world.entity {
-            it += FLTransformComponent(startPos).apply {
+            it += TransformComponent(startPos).apply {
                 size.set(0.25f, 0.25f)
             }
             it += GraphicComponent(Sprite(CWG2dGameScreenFleks.bullet_texture)).apply {

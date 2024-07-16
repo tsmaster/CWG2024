@@ -3,7 +3,7 @@ package game.fleks.systems
 import com.badlogic.gdx.math.MathUtils
 import com.github.quillraven.fleks.Entity
 import com.github.quillraven.fleks.World.Companion.family
-import game.fleks.components.FLTransformComponent
+import game.fleks.components.TransformComponent
 import game.fleks.components.PlayerComponent
 import game.fleks.components.TargetedSteeringComponent
 import kotlin.math.abs
@@ -12,10 +12,10 @@ import kotlin.math.cos
 import kotlin.math.sin
 
 class MoveSystem () : com.github.quillraven.fleks.IteratingSystem (
-    family = family { all(TargetedSteeringComponent, game.fleks.components.FLTransformComponent)}
+    family = family { all(TargetedSteeringComponent, game.fleks.components.TransformComponent)}
 ) {
     override fun onTickEntity(entity: Entity) {
-        val transform = entity[FLTransformComponent]
+        val transform = entity[TransformComponent]
         val steeringComponent = entity[TargetedSteeringComponent]
 
         if (entity.has(PlayerComponent)) {
@@ -34,7 +34,7 @@ class MoveSystem () : com.github.quillraven.fleks.IteratingSystem (
     }
 
     private fun moveEntity(
-        transformComponent: FLTransformComponent,
+        transformComponent: TransformComponent,
         steeringComponent: TargetedSteeringComponent,
         deltaTime: Float) : Boolean {
         val movementThisTick = steeringComponent.speed * deltaTime

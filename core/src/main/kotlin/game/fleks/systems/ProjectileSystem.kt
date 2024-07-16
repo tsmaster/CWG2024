@@ -5,17 +5,17 @@ import com.github.quillraven.fleks.IteratingSystem
 import com.github.quillraven.fleks.World.Companion.family
 import game.fleks.components.DamageableComponent
 import game.fleks.components.ProjectileComponent
-import game.fleks.components.FLTransformComponent
+import game.fleks.components.TransformComponent
 import game.fleks.components.RemoveComponent
 
 class ProjectileSystem() : IteratingSystem (
     family = family { all(
         ProjectileComponent,
-        FLTransformComponent
+        TransformComponent
     )}
 ) {
     override fun onTickEntity(entity: Entity) {
-        val transform = entity[FLTransformComponent]
+        val transform = entity[TransformComponent]
         val projectile = entity[ProjectileComponent]
 
         projectile.lifetimeLeftSeconds -= deltaTime
@@ -33,11 +33,11 @@ class ProjectileSystem() : IteratingSystem (
         // check collision with damageable
         val damageableEntities = world.family {
             all(DamageableComponent,
-                FLTransformComponent)
+                TransformComponent)
         }
 
         damageableEntities.forEach { dmgEntity ->
-            val dmgTransform = dmgEntity[FLTransformComponent]
+            val dmgTransform = dmgEntity[TransformComponent]
             val dmgDamage = dmgEntity[DamageableComponent]
 
             if (dmgDamage.dmgTeamIndex == projectile.teamIndex)

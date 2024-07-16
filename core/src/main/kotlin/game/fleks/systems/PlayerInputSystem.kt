@@ -10,7 +10,7 @@ import com.github.quillraven.fleks.World.Companion.family
 import com.github.quillraven.fleks.World.Companion.inject
 import game.fleks.components.PlayerComponent
 import game.fleks.components.TargetedSteeringComponent
-import game.fleks.components.FLTransformComponent
+import game.fleks.components.TransformComponent
 import game.fleks.components.WeaponComponent
 
 class PlayerInputSystem(
@@ -18,12 +18,12 @@ class PlayerInputSystem(
 ) : IteratingSystem (
     family = family { all (
         PlayerComponent,
-        FLTransformComponent,
+        TransformComponent,
         TargetedSteeringComponent,
         WeaponComponent)}
 ) {
     override fun onTickEntity(entity: Entity) {
-        val transformComponent = entity[FLTransformComponent]
+        val transformComponent = entity[TransformComponent]
         val steeringComponent = entity[TargetedSteeringComponent]
         val weaponComponent = entity[WeaponComponent]
 

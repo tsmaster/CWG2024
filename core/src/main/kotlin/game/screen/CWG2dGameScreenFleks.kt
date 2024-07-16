@@ -60,7 +60,7 @@ class CWG2dGameScreenFleks(game: CWGGame) : CWGScreen(game) {
     private fun makeStoneTileEntity(x: Int, y: Int)
     {
         fleksWorld.entity {
-            it += FLTransformComponent(Vector2(x * 1.0f, y * 1.0f)).apply {
+            it += TransformComponent(Vector2(x * 1.0f, y * 1.0f)).apply {
                 size = Vector2(2.0f, 2.0f)
             }
             it += GraphicComponent(sprite = Sprite(stoneTileTexture)).apply {
@@ -74,7 +74,7 @@ class CWG2dGameScreenFleks(game: CWGGame) : CWGScreen(game) {
         if (isPlayer)
         {
             fleksWorld.entity {
-                it += FLTransformComponent(Vector2(
+                it += TransformComponent(Vector2(
                     com.badlogic.gdx.math.MathUtils.random(0.0f, 16.0f),
                     com.badlogic.gdx.math.MathUtils.random(0.0f, 9.0f),
                 )).apply {
@@ -115,7 +115,7 @@ class CWG2dGameScreenFleks(game: CWGGame) : CWGScreen(game) {
             }
 
             fleksWorld.entity {
-                it += FLTransformComponent(Vector2(
+                it += TransformComponent(Vector2(
                     MathUtils.random(0.0f, 16.0f),
                     MathUtils.random(0.0f, 9.0f))
                 ).apply {
